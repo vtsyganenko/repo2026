@@ -7,6 +7,7 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF)
 
 add_subdirectory(lib_arithmetics)
+add_subdirectory(lib_analytics)
 
 add_executable(app main.cpp)
-target_link_libraries(app arithmetics)
+target_link_libraries(app arithmetics analytics)
