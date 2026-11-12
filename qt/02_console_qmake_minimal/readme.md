@@ -9,3 +9,17 @@ or we can set debug:
 ```
 qmake-qt5 .. CONFIG+=debug
 ```
+Build in Mac (ARM)
+```
+mkdir build
+cd build
+qmake ..
+make all
+```
+Build in Linux (Xubuntu)
+```
+mkdir build
+cd build
+qmake ..
+make all
+```
