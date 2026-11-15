@@ -13,6 +13,13 @@ cd build
 cmake ..
 make
 ```
+MacOS
+```
+mkdir build
+cd build
+cmake -DCMAKE_PREFIX_PATH=/opt/homebrew/opt/qt5 ..
+make all
+```
 
 #### qmake
 win
@@ -28,4 +35,11 @@ mkdir build
 cd build
 qmake ..
 make
+```
+MacOS
+```
+mkdir build
+cd build
+qmake ..
+make all
 ```
