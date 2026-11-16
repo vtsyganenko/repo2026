@@ -21,12 +21,14 @@ Window {
             id: firstValueField
             // take whole width
             Layout.fillWidth: true
+            selectByMouse: true
             validator: DoubleValidator {}
         }
 
         TextField {
             id: secondValueField
             Layout.fillWidth: true
+            selectByMouse: true
             validator: DoubleValidator {}
         }
 
@@ -55,6 +57,7 @@ Window {
             id: resultField
             Layout.fillWidth: true
             readOnly: true
+            selectByMouse: true
         }
 
         Button {
