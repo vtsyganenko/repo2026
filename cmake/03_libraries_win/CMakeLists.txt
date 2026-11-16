@@ -12,6 +12,7 @@ set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)
 set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/lib)
 
 add_subdirectory(lib_arithmetics)
+add_subdirectory(lib_analytics)
 
 add_executable(app main.cpp)
-target_link_libraries(app arithmetics)
+target_link_libraries(app arithmetics analytics)
