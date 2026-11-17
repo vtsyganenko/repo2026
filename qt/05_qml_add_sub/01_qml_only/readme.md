@@ -1,0 +1,1 @@
+Implementation in the qml only: all calculations are made in the JS side
