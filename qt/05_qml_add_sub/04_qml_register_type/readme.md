@@ -1,25 +1,40 @@
-Implementation where qml uses c++ methods and receives c++ (qt) signals.
+Implementation where C++ types are registrated in the QML.
 
-Class CalculatorReact is registered in the QML context. It has Q_INVOKABLE methods available from the QML side. See example 02.
+In this example, we don't put C++ objects to the QML context, but register classes in the QML, so we able to create such objects in the QML code.
+Here the register CalculatorReact type:
+```
+    // Register our C++ class as QML type:
+    // Params: module name, module version (1.0), qml tag
+    qmlRegisterType<CalculatorReact>("Backend.Calculation", 1, 0, "Calculator");
+```
+In the QML code, we can create calculator object:
+```
+    import Backend.Calculation 1.0
 
-Also, class CalculatorReact has property:
+    Calculator {
+        id: calc
+    }
 ```
-Q_PROPERTY(QString result READ result NOTIFY resultChanged)
+Logger class HistoryLogger is registered as singleton, so we don't need to create it in the QML code, it created in the lambda
 ```
-with getter and notification signal:
+    // Register singleton
+    qmlRegisterSingletonType<HistoryLogger>("Backend.Logger", 1, 0, "Logger",
+        [](QQmlEngine* engine, QJSEngine* scriptEngine) -> QObject* {
+            Q_UNUSED(engine);
+            Q_UNUSED(scriptEngine);
+            // QML engine will delete it
+            return new HistoryLogger("calculation_log.txt");
+        });
 ```
-public:
-    <...>
-    QString result() const;
+In the QML code, we just use the singleton
+```
+    import Backend.Logger 1.0
 
-signals:
-    void resultChanged();
-```
-So UI element field could be connected with the notification signal:
-```
-    TextField {
-        id: resultField
-        <...>
-        text: calc.result
+    // caught signal from calc here
+    Connections {
+        target: calc
+        function onExpressionEvaluated(expression) {
+            Logger.log(expression)
+        }
     }
 ```
