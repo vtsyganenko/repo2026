@@ -1,0 +1,22 @@
+cmake_minimum_required(VERSION 3.15)
+project(hello LANGUAGES CXX)
+
+set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+
+set(CMAKE_INCLUDE_CURRENT_DIR ON)
+set(CMAKE_AUTOUIC ON)
+set(CMAKE_AUTOMOC ON)
+set(CMAKE_AUTORCC ON)
+
+find_package(Qt5 COMPONENTS Core Quick REQUIRED)
+
+add_executable(hello
+    ./src/main.cpp
+    ./src/calculator_react.cpp
+    ./src/history_logger.cpp
+    ./src/history_model.cpp
+    ui/qml.qrc
+)
+
+target_link_libraries(hello PRIVATE Qt5::Core Qt5::Quick)
