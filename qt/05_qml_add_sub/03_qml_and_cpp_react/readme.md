@@ -1,4 +1,4 @@
-Implementation where qml uses c++ methods and receives c++ signals.
+Implementation where qml uses c++ methods and receives c++ (qt) signals.
 
 Class CalculatorReact is registered in the QML context. It has Q_INVOKABLE methods available from the QML side. See example 02.
 
@@ -19,9 +19,7 @@ So UI element field could be connected with the notification signal:
 ```
     TextField {
         id: resultField
-        Layout.fillWidth: true
-        readOnly: true
-        selectByMouse: true
+        <...>
         text: calc.result
     }
 ```

@@ -1,4 +1,4 @@
-Implementation where qml use c++ methods.
+Implementation where qml uses c++ methods.
 Class Calculator is registered in the QML context:
 ```
     QQmlApplicationEngine engine;

@@ -1,1 +1,1 @@
-Simple app for addition on subtraction two values
+Simple app for addition or subtraction two values
